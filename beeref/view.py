@@ -380,6 +380,10 @@ class BeeGraphicsView(MainControlsMixin,
         self.undo_stack.push(commands.ResetTransforms(
             self.scene.selectedItems(user_only=True)))
 
+    def on_action_show_filename(self):
+        widgets.BeeNotification(self, os.path.basename(
+            self.scene.selectedItems()[0].filename))
+
     def on_action_show_color_gamut(self):
         widgets.color_gamut.GamutDialog(self, self.scene.selectedItems()[0])
 
@@ -572,6 +576,7 @@ class BeeGraphicsView(MainControlsMixin,
         confirm = self.get_confirmation_unsaved_changes(
             'There are unsaved changes. Are you sure you want to quit?')
         if confirm:
+            self.scene.deselect_all_items()
             logger.info('User quit. Exiting...')
             self.app.quit()
 

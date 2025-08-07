@@ -50,7 +50,7 @@ args = parser.parse_args()
 
 
 BEEVERSION = args.version.removeprefix('v')
-APPIMAGE = 'python3.11.9-cp311-cp311-manylinux2014_x86_64.AppImage'
+APPIMAGE = 'python3.11.13-cp311-cp311-manylinux2014_x86_64.AppImage'
 # ^ Siehe:
 # https://python-appimage.readthedocs.io/en/latest/#alternative-site-packages-location
 PYVER = '3.11'

@@ -151,7 +151,9 @@ class SelectableMixin(BaseItemMixin):
         self.setAcceptHoverEvents(True)
         self.setFlags(
             QtWidgets.QGraphicsItem.GraphicsItemFlag.ItemIsMovable
-            | QtWidgets.QGraphicsItem.GraphicsItemFlag.ItemIsSelectable)
+            | QtWidgets.QGraphicsItem.GraphicsItemFlag.ItemIsSelectable
+            | QtWidgets.QGraphicsItem.GraphicsItemFlag.
+            ItemSendsGeometryChanges)
 
         self.viewport_scale = 1
         self.active_mode = None

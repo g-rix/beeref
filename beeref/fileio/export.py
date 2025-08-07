@@ -83,11 +83,11 @@ class SceneExporterBase(ExporterBase):
     def __init__(self, scene):
         self.scene = scene
         self.scene.cancel_active_modes()
-        self.scene.deselect_all_items()
+        # self.scene.deselect_all_items() grix removed
         # Selection outlines/handles will be rendered to the exported
         # image, so deselect first. (Alternatively, pass an attribute
         # to paint functions to not paint them?)
-        rect = self.scene.itemsBoundingRect()
+        rect = self.scene.itemsBoundingRect(selection_only=True)
         logger.trace(f'Items bounding rect: {rect}')
         size = QtCore.QSize(int(rect.width()), int(rect.height()))
         logger.trace(f'Export size without margins: {size}')
@@ -193,12 +193,12 @@ class SceneToSVGExporter(SceneExporterBase):
                     'xmlns': 'http://www.w3.org/2000/svg',
                     'xmlns:xlink': 'http://www.w3.org/1999/xlink',
                     })
-
-        rect = self.scene.itemsBoundingRect()
+        # GMR
+        rect = self.scene.itemsBoundingRect(selection_only=True)
         offset = rect.topLeft() - QtCore.QPointF(self.margin, self.margin)
 
-        for i, item in enumerate(sorted(self.scene.items(),
-                                        key=lambda x: x.zValue())):
+        for i, item in enumerate(sorted(self.scene.selectedItems(
+                    user_only=True), key=lambda x: x.zValue())):
             # z order in SVG specified via the order of elements in the tree
             pos = item.pos() - offset
             anchor = pos

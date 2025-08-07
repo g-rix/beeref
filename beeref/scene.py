@@ -451,8 +451,14 @@ class BeeGraphicsScene(QtWidgets.QGraphicsScene):
     def items_by_type(self, itype):
         """Returns all items of the given type."""
 
-        return filter(lambda i: getattr(i, 'TYPE', None) == itype,
-                      self.items())
+        # GMR export active selection, else export everything
+        items = super().selectedItems()
+        if len(items) > 0:
+            return filter(lambda i: getattr(i, 'TYPE', None) == itype,
+                          items)
+        else:
+            return filter(lambda i: getattr(i, 'TYPE', None) == itype,
+                          self.items())
 
     def items_for_save(self):
 
@@ -460,9 +466,13 @@ class BeeGraphicsScene(QtWidgets.QGraphicsScene):
 
         Items to be saved are items that have a save_id attribute.
         """
-
-        return filter(lambda i: hasattr(i, 'save_id'),
-                      self.items(order=Qt.SortOrder.AscendingOrder))
+        # GMR save active selection, else save everything
+        items = super().selectedItems()
+        if len(items) > 0:
+            return filter(lambda i: hasattr(i, 'save_id'), items)
+        else:
+            return filter(lambda i: hasattr(i, 'save_id'),
+                          self.items(order=Qt.SortOrder.AscendingOrder))
 
     def clear_save_ids(self):
         for item in self.items_for_save():

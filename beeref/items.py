@@ -23,6 +23,8 @@ import logging
 import os.path
 
 from PyQt6 import QtCore, QtGui, QtWidgets
+from PyQt6.QtWidgets import QGraphicsItem
+from PyQt6.QtGui import QFont
 from PyQt6.QtCore import Qt
 
 from beeref import commands
@@ -473,6 +475,12 @@ class BeePixmapItem(BeeItemMixin, QtWidgets.QGraphicsPixmapItem):
         else:
             pm = self._grayscale_pixmap if self.grayscale else self.pixmap()
             painter.drawPixmap(self.crop, pm, self.crop)
+            if self.has_selection_outline():
+                fontsize = int(self.pixmap().size().width() /
+                               (2*len(os.path.basename(self.filename))))
+                painter.setFont(QFont('Arial', fontsize))
+                painter.drawText(20, self.pixmap().size().height()-20,
+                                 os.path.basename(self.filename))
             self.paint_selectable(painter, option, widget)
 
     def enter_crop_mode(self):
@@ -499,6 +507,18 @@ class BeePixmapItem(BeeItemMixin, QtWidgets.QGraphicsPixmapItem):
         self.ungrabKeyboard()
         self.update()
         self.scene().crop_item = None
+
+    def itemChange(self, change, value):
+        if change == QGraphicsItem.GraphicsItemChange.ItemPositionChange:
+            if (QtWidgets.QApplication.keyboardModifiers() ==
+                    Qt.KeyboardModifier.ControlModifier):
+                grid_size = self.settings.valueOrDefault('Items/arrange_gap')
+                if grid_size > 0:
+                    xV = round(value.x()/grid_size)*grid_size
+                    yV = round(value.y()/grid_size)*grid_size
+                    return QtCore.QPointF(xV, yV)
+
+        return super().itemChange(change, value)
 
     def keyPressEvent(self, event):
         if event.key() in (Qt.Key.Key_Return, Qt.Key.Key_Enter):

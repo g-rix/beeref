@@ -111,6 +111,7 @@ menu_structure = [
             'change_opacity',
             'grayscale',
             MENU_SEPARATOR,
+            'show_filename',
             'show_color_gamut',
             'sample_color',
         ],
