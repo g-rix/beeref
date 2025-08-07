@@ -65,7 +65,7 @@ Features
 * Enable always-on-top-mode and disable the title bar to let the BeeRef window unobtrusively float above your art program:
 
 * Crude snap-to-grid when moving images. Press 'CTRL' while moving image, uses the 'Settings: arrange_gap' for the grid-size. 
-    ('arrange_gap' must be > 0 to see an effect, also it only **images**.)
+    ('arrange_gap' must be > 0 to see an effect, also it only images.)
 * Export to .svg (Only), now only exports the current active selection.
 * 'Save-As' now supports selections. An active selection will now only save those. (No selection -> save all).
 * The filename of a selected image(s) is displayed at the bottom of the image(s).
