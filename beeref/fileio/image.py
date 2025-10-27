@@ -16,6 +16,7 @@
 import logging
 import os.path
 import tempfile
+import urllib
 from urllib.error import URLError
 from urllib import parse, request
 
@@ -92,15 +93,18 @@ def load_image(path):
     url = bytes(path.toEncoded()).decode()
     domain = '.'.join(parse.urlparse(url).netloc.split(".")[-2:])
     img = exif_rotated_image()
+
+    req = urllib.request.Request(url, headers={'User-Agent' : "BeeRef Reference Image Viewer"})
+
     if domain == 'pinterest.com':
         try:
-            page_data = request.urlopen(url).read()
+            page_data = request.urlopen(req).read()
             root = etree.HTML(page_data)
             url = root.xpath("//img")[0].get('src')
         except Exception as e:
             logger.debug(f'Pinterest image download failed: {e}')
     try:
-        imgdata = request.urlopen(url).read()
+        imgdata = request.urlopen(req).read()
     except URLError as e:
         logger.debug(f'Downloading image failed: {e.reason}')
     else:
