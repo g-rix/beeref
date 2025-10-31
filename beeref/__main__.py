@@ -69,6 +69,7 @@ class BeeRefMainWindow(QtWidgets.QMainWindow):
         if confirm:
              geom = self.saveGeometry()
              self.view.settings.setValue('MainWindow/geometry', geom)
+             self.view.on_action_deselect_all()
              event.accept()
         else:
              event.ignore()
