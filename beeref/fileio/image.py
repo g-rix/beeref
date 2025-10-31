@@ -93,8 +93,8 @@ def load_image(path):
     domain = '.'.join(parse.urlparse(url).netloc.split(".")[-2:])
     img = exif_rotated_image()
 
-    req = request.Request(url, headers={'User-Agent': 
-            "BeeRef Reference Image Viewer"})
+    req = request.Request(url, headers={'User-Agent':
+               "BeeRef Reference Image Viewer"})
 
     if domain == 'pinterest.com':
         try:
