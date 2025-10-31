@@ -94,7 +94,7 @@ def load_image(path):
     img = exif_rotated_image()
 
     req = request.Request(url, headers={'User-Agent':
-               "BeeRef Reference Image Viewer"})
+                          "BeeRef Reference Image Viewer"})
 
     if domain == 'pinterest.com':
         try:
