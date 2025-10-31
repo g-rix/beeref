@@ -64,9 +64,15 @@ class BeeRefMainWindow(QtWidgets.QMainWindow):
         self.show()
 
     def closeEvent(self, event):
-        geom = self.saveGeometry()
-        self.view.settings.setValue('MainWindow/geometry', geom)
-        event.accept()
+        confirm = self.view.get_confirmation_unsaved_changes(
+            'There are unsaved changes. Are you sure you want to quit?')
+        if confirm:
+             geom = self.saveGeometry()
+             self.view.settings.setValue('MainWindow/geometry', geom)
+             event.accept()
+        else:
+             event.ignore()
+
 
     def __del__(self):
         del self.view
