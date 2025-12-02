@@ -16,6 +16,8 @@
 import logging
 import os.path
 import tempfile
+import ssl
+import certifi
 from urllib.error import URLError
 from urllib import parse, request
 
@@ -98,13 +100,13 @@ def load_image(path):
 
     if domain == 'pinterest.com':
         try:
-            page_data = request.urlopen(req).read()
+            page_data = request.urlopen(req, context = ssl.create_default_context(cafile=certifi.where())).read()
             root = etree.HTML(page_data)
             url = root.xpath("//img")[0].get('src')
         except Exception as e:
             logger.debug(f'Pinterest image download failed: {e}')
     try:
-        imgdata = request.urlopen(req).read()
+        imgdata = request.urlopen(req, context = ssl.create_default_context(cafile=certifi.where())).read()
     except URLError as e:
         logger.debug(f'Downloading image failed: {e.reason}')
     else:
