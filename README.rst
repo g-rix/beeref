@@ -66,7 +66,8 @@ Features
 New
 ---
 * Basic snap-to-grid when moving **images**. Press '**CTRL**' while moving the image, uses the 'Settings: arrange_gap' for the grid-size.
-* Export to **.svg**, now **ONLY** exports the **current active selection**. (No selection -> export nothing). **Note: Only .svg**
+* Export-Scene to **.svg**, now **ONLY** exports the **current active selection**. (No selection -> export nothing). **Note: Only .svg**
+* Export-Images supports **selections**. An **active selection** will now **ONLY** export those. (No selection reverts to save all). **Note: Different to Export-Scene as above**
 * 'Save-As' supports **selections**. An **active selection** will now **ONLY** save those. (No selection -> save all). **Note: Different to export as above**
 * Selected image(s) filename(s) displayed at the bottom of the image(s).
 * Selected image filename can be queried via the 'F' hotkey or using the menu system. **Note: Displayed on the notification pop-up**
