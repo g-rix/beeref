@@ -47,8 +47,6 @@ Tested and used on iMac 2020 (Intel) running Sanoma 14.8.2. (Built with macos-15
 **Windows**
 Tested on Intel x86_64 running Windows 11 Pro (24H2).
 
-Follow further releases via the `atom feed <https://github.com/rbreu/beeref/releases.atom>`_.
-
 
 Development Version
 ~~~~~~~~~~~~~~~~~~~
