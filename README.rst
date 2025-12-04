@@ -36,11 +36,16 @@ Installation
 Stable Release
 ~~~~~~~~~~~~~~
 
-Get the file for your operating system (Windows, Linux, macOS) from the `latest release <https://github.com/rbreu/beeref/releases>`_. The different Linux versions are built on different versions of Ubuntu. The should work on other distros as well, but you might have to try which one works.
+Get the file for your operating system (Windows, Linux, macOS) from the `latest release <https://github.com/g-rix/beeref/releases>`_. 
 
-**Linux users** need to give the file executable rights before running it. Optional: If you want to have BeeRef appear in the app menu, save the desktop file from the `release section <https://github.com/rbreu/beeref/releases>`_ in ``~/.local/share/applications``, save the `logo <https://raw.githubusercontent.com/rbreu/beeref/main/beeref/assets/logo.png>`_, and adjust the path names in the desktop file to match the location of your BeeRef installation.
+**Linux users** need to give the file executable rights before running it. Optional: If you want to have BeeRef appear in the app menu, save the desktop file from the `release section <https://github.com/rbreu/beeref/releases>`_ in ``~/.local/share/applications``, save the `logo <https://raw.githubusercontent.com/rbreu/beeref/main/beeref/assets/logo.png>`_, and adjust the path names in the desktop file to match the location of your BeeRef installation. 
+Built and tested on Ubuntu 20.04, but should work on other distros as well.
 
 **MacOS X users**, look at `detailed instructions <https://beeref.org/macosx-run.html>`_ if you have problems running BeeRef.
+Tested and used on iMac 2020 (Intel) running Sanoma 14.8.2. (Built with macos-15-intel runner)
+
+**Windows**
+Tested on Intel x86_64 running Windows 11 Pro (24H2).
 
 Follow further releases via the `atom feed <https://github.com/rbreu/beeref/releases.atom>`_.
 
@@ -63,15 +68,16 @@ Features
 * Mass-arrange images vertically, horizontally or for optimal usage of space
 * Add text notes
 * Enable always-on-top-mode and disable the title bar to let the BeeRef window unobtrusively float above your art program:
+
 New
 ---
-* Basic snap-to-grid when moving **images**. Press '**CTRL**' while moving the image, uses the 'Settings: arrange_gap' for the grid-size.
-* Export-Scene to **.svg**, now **ONLY** exports the **current active selection**. (No selection -> export nothing). **Note: Only .svg**
-* Export-Images supports **selections**. An **active selection** will now **ONLY** export those. (No selection reverts to save all). **Note: Different to Export-Scene as above**
-* 'Save-As' supports **selections**. An **active selection** will now **ONLY** save those. (No selection -> save all). **Note: Different to export as above**
+* Basic Snap-To-Grid when moving **images**. Press '**CTRL**' while moving the image, uses the 'Settings: arrange_gap' for the grid-size.
+* 'Export-Scene' to **.SVG**, **ONLY** exports the **current active selection**. (No selection exports nothing). **Note: Only .svg**
+* 'Export-Images' **ONLY** exports **selected** images. (No selection reverts to export all). **Note: Different to Export-Scene above**
+* 'Save-As' saves **ONLY** selected objects to a new file. (No selection reverts to save-all). 
 * Selected image(s) filename(s) displayed at the bottom of the image(s).
 * Selected image filename can be queried via the 'F' hotkey or using the menu system. **Note: Displayed on the notification pop-up**
-
+   
 .. image:: https://github.com/rbreu/beeref/blob/main/images/screenshot.png
 
 
