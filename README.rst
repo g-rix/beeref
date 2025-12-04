@@ -29,6 +29,14 @@ BeeRef — A Simple Reference Image Viewer
 .. |downloads-latest| image:: https://img.shields.io/github/downloads/rbreu/beeref/latest/total.svg
    :target: https://github.com/rbreu/beeref/releases
 
+Note
+----
+This repository is not under active development, it's primary purpose is to provide binaries for 
+the last tag **0.3.4-dev** as https://github.com/rbreu/beeref/issues/136
+
+Some issues have been fixed/addressed as detailed in the release-notes. The few new features are 
+detailed under **New** below.
+
 
 Installation
 ------------
@@ -69,10 +77,10 @@ Features
 
 New
 ---
-* Basic Snap-To-Grid when moving **images**. Press '**CTRL**' while moving the image, uses the 'Settings: arrange_gap' for the grid-size.
-* 'Export-Scene' to **.SVG**, **ONLY** exports the **current active selection**. (No selection exports nothing). **Note: Only .svg**
-* 'Export-Images' **ONLY** exports **selected** images. (No selection reverts to export all). **Note: Different to Export-Scene above**
-* 'Save-As' saves **ONLY** selected objects to a new file. (No selection reverts to save-all). 
+* Basic Snap-To-Grid press '**CTRL**' while moving the selection, grid-size derived from 'Settings: arrange_gap'.
+* 'Export-Scene' to **.SVG**, exports the **selection**. (No selection exports nothing). **Note: Only .svg**
+* 'Export-Images' exports **selected** images. (Nothing selected reverts to export-all-images). **Note: Different to above**
+* 'Save-As' saves **selected** object(s) to a new file. (Nothing selected reverts to save-all). 
 * Selected image(s) filename(s) displayed at the bottom of the image(s).
 * Selected image filename can be queried via the 'F' hotkey or using the menu system. **Note: Displayed on the notification pop-up**
    
